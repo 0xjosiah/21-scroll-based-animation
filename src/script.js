@@ -159,8 +159,8 @@ const tick = () =>
 
     const parallaxX = cursor.x
     const parallaxY = cursor.y
-    cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * .1
-    cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * .1
+    cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 3 * deltaTime
+    cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 3 * deltaTime
 
     // Animate meshes
     for(const mesh of sectionMeshes) {
