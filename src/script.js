@@ -84,6 +84,17 @@ for (let i = 0; i < particlesCount; i++) {
 const particlesGeometry = new THREE.BufferGeometry()
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
 
+// Material
+const particlesMaterial = new THREE.PointsMaterial({
+    color: parameters.materialColor,
+    sizeAttenuation: true, // creates depth perspective - if closer, looks larger
+    size: .03
+})
+
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles)
+
 /**
  * Lights
  */
