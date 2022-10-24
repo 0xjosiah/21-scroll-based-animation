@@ -146,10 +146,13 @@ window.addEventListener('mousemove', (e) => {
  * Animate
  */
 const clock = new THREE.Clock()
+let previousTime = 0
 
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
 
     // Animate camera
     camera.position.y = -(scrollY / sizes.height * objectsDistance)
