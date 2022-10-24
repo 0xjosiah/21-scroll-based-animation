@@ -161,7 +161,17 @@ let currentSection = 0
 window.addEventListener('scroll', () => {
     scrollY = window.scrollY
     const newSection = Math.round(scrollY / sizes.height)
-    if(newSection != currentSection) currentSection = newSection
+    if(newSection != currentSection) {
+        currentSection = newSection
+        gsap.to(
+            sectionMeshes[currentSection].rotation, {
+                duration: 1.5,
+                ease: 'power2.inOut',
+                x: '+=6',
+                y: '+=3'
+            }
+        )
+    }
 })
 
 /**
@@ -198,8 +208,8 @@ const tick = () =>
 
     // Animate meshes
     for(const mesh of sectionMeshes) {
-        mesh.rotation.x = elapsedTime * .1
-        mesh.rotation.y = elapsedTime * .15
+        mesh.rotation.x += deltaTime * .1
+        mesh.rotation.y += deltaTime * .15
     }
 
     // Render
